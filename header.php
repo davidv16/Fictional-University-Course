@@ -16,7 +16,8 @@
         <div class="site-header__menu group">
           <nav class="main-navigation">
             <ul>
-              <li><a href="<?php echo site_url('/about-us')?>">About Us</a></li>
+              <!--if the current page is the about us page or if this page's parent page is the about us then echo class current item -->
+              <li <?php if (is_page('about-us') or wp_get_post_parent_i(0) == 11) echo 'class="current-menu-item"' ?>><a href="<?php echo site_url('/about-us')?>">About Us</a></li>
               <li><a href="#">Programs</a></li>
               <li><a href="#">Events</a></li>
               <li><a href="#">Campuses</a></li>
