@@ -65,6 +65,15 @@ add_action('after_setup_theme', 'university_features');
  */
 function university_adjust_queries($query) {
   // only run if on the front page but not on the admin window
+  // and only on program archive
+  // and is only the default url based query
+  if(!is_admin() AND is_post_type_archive('program') AND is_main_query()){
+    //overwrite the default query
+    $query->set('orderby', 'title');
+    $query->set('order', 'ASC');
+    $query->set('posts_per_page', -1);
+  }
+  // only run if on the front page but not on the admin window
   // and only on event archive
   // and is only the default url based query
   if(!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()) {
