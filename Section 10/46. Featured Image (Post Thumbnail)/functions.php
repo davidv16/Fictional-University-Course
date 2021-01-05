@@ -69,14 +69,6 @@ function university_features() {
    * args 4: crop or not?
    */
   add_image_size('professorPortrait', 480, 650, true);
-  /**
-   * Function that adds a new image thumbnail size
-   * args 1: nickname for new picturesize
-   * args 2: width
-   * args 3: height
-   * args 4: crop or not?
-   */
-  add_image_size( 'pageBanner', '1500', '350', true);
 }
 
 /**
