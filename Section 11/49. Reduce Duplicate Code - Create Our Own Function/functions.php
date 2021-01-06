@@ -18,7 +18,7 @@ function pageBanner($args = NULL) {
   //checks if the array has a photo, if not...
   if(!$args['photo']) {
     //check if there is a background banner in the custom field of the page
-    if(get_field('page_banner_background_image') AND !is_archive() AND !is_home()) {
+    if(get_field('page_banner_background_image')) {
       //then put the background banner in the array
       $args['photo'] = get_field('page_banner_background_image')['sizes']['pageBanner'];
       //or else get the default photo
