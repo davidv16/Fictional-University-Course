@@ -55,16 +55,6 @@ function university_files() {
    * arg2: uri
    */
   wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-  
-  /**
-  * Load google map
-  * arg1: nickname
-  * arg2: get the uri of the file
-  * arg3: Does the js file depend on any other file (NULL = no!)
-  * arg4: version number, not important
-  * arg5: do you want the script to be loaded before the enclosing body tag (true = yes)
-  */
-  wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=AIzaSyA3nwQgROE4LQnwDxGVcHYxIhrpwiwWFbs', NULL, '1.0', true);
 
   /**
    * if the domain where we're currently running this address is fictional-university.local
@@ -84,7 +74,7 @@ function university_files() {
   
   } else {
     wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.8c97d901916ad616a264.js'), NULL, '1.0', true);
-    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.6f7531f2877abe9ad033.js'), NULL, '1.0', true);
+    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.bc49dbb23afb98cfc0f7.js'), NULL, '1.0', true);
     wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/style.css'));
   }
   
@@ -141,14 +131,6 @@ add_action('after_setup_theme', 'university_features');
  * args1: send the query through the function to manipulate
  */
 function university_adjust_queries($query) {
-  // only run if on the front page but not on the admin window
-  // and only on campus archive
-  // and is only the default url based query
-  if(!is_admin() AND is_post_type_archive('campus') AND is_main_query()){
-    //overwrite the default query
-    $query->set('posts_per_page', -1);
-  }
-
   // only run if on the front page but not on the admin window
   // and only on program archive
   // and is only the default url based query
