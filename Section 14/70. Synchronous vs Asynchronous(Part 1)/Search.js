@@ -63,14 +63,12 @@ class Search {
     /**
      * a function that gets search results in json from url
      */
-    $.when(
-      //get the posts
-      $.getJSON(universityData.root_url + `/wp-json/wp/v2/posts?search=${this.searchField.val()}`),
+    //get the posts
+    $.getJSON(universityData.root_url + `/wp-json/wp/v2/posts?search=${this.searchField.val()}`, posts => {
       //get the pages
-      $.getJSON(universityData.root_url + `/wp-json/wp/v2/pages?search=${this.searchField.val()}`)
-      ).then((posts, pages) => {
+      $.getJSON(universityData.root_url + `/wp-json/wp/v2/pages?search=${this.searchField.val()}`, pages => {
         //combine the search results from pages and posts
-        var combinedResults = posts[0].concat(pages[0])
+        var combinedResults = posts.concat(pages)
         //write out a list of search results
         this.resultsDiv.html(`
           <h2 class="search-overlay__section-title">general Information</h2>
@@ -79,9 +77,7 @@ class Search {
           ${combinedResults.length ? '</ul>' : ''}
           `)
           this.isSpinnerVisible = false
-    //error catching
-    }, () => {
-      this.resultsDiv.html('<p>Unexpected error: please try again</p>')
+      })
     })
   }
 

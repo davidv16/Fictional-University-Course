@@ -1,8 +1,6 @@
 import $ from 'jquery'
 class Search {
   constructor() {
-    //run search element html in footer
-    this.addSearchHTML()
     this.resultsDiv = $("#search-overlay__results")
     this.openButton = $(".js-search-trigger")
     this.closeButton = $(".search-overlay__close")
@@ -63,25 +61,14 @@ class Search {
     /**
      * a function that gets search results in json from url
      */
-    $.when(
-      //get the posts
-      $.getJSON(universityData.root_url + `/wp-json/wp/v2/posts?search=${this.searchField.val()}`),
-      //get the pages
-      $.getJSON(universityData.root_url + `/wp-json/wp/v2/pages?search=${this.searchField.val()}`)
-      ).then((posts, pages) => {
-        //combine the search results from pages and posts
-        var combinedResults = posts[0].concat(pages[0])
-        //write out a list of search results
-        this.resultsDiv.html(`
-          <h2 class="search-overlay__section-title">general Information</h2>
-          ${combinedResults.length ? '<ul class="link-list min-list">' : '<p>No gerneral information matches that search</p>'}
-            ${combinedResults.map(item => `<li><a href="${item.link}">${item.title.rendered}</a></li>`).join('')}
-          ${combinedResults.length ? '</ul>' : ''}
-          `)
-          this.isSpinnerVisible = false
-    //error catching
-    }, () => {
-      this.resultsDiv.html('<p>Unexpected error: please try again</p>')
+    $.getJSON(universityData.root_url + `/wp-json/wp/v2/posts?search=${this.searchField.val()}`, posts => {
+      this.resultsDiv.html(`
+      <h2 class="search-overlay__section-title">general Information</h2>
+      ${posts.length ? '<ul class="link-list min-list">' : '<p>No gerneral information matches that search</p>'}
+        ${posts.map(item => `<li><a href="${item.link}">${item.title.rendered}</a></li>`).join('')}
+      ${posts.length ? '</ul>' : ''}
+      `)
+      this.isSpinnerVisible = false
     })
   }
 
@@ -108,13 +95,7 @@ class Search {
    */
   openOverlay() {
     this.searchOverlay.addClass("search-overlay--active")
-    $("body").addClass("body-no-scroll")
-    
-    //to clean the search field after use
-    this.searchField.val('')
-    
-    //to automatically start writing in the search field
-    setTimeout(() => this.searchField.focus(), 301)
+    $("body").addClass("body-no-scroll")  
     this.isOverlayOpen = true
   }
   
@@ -125,28 +106,6 @@ class Search {
     this.searchOverlay.removeClass("search-overlay--active")
     $("body").removeClass("body-no-scroll")
     this.isOverlayOpen = false
-  }
-
-  /**
-   * a function to run the html search element in the body.
-   */
-  addSearchHTML() {
-    $("body").append(`
-    <div class="search-overlay">
-      <div class="search-overlay__top">
-        <div class="container">
-          <i class="fa fa-search search-overlay__icon" aria-hidden="true"></i>
-          <input type="text" class="search-term" placeholder="What are you looking for?" id="search-term">
-          <i class="fa fa-window-close search-overlay__close" aria-hidden="true"></i>
-        </div>
-      </div>
-
-      <div class="container">
-        <div id="search-overlay__results"></div>
-      </div>
-
-    </div>
-    `)
   }
 }
 
