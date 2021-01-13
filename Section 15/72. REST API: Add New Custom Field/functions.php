@@ -1,8 +1,5 @@
 <?php
 
-// get extra delegated code from this file 
-require get_theme_file_path('/inc/search-route.php');
-
 /**
  * A function to make a custom field in the wordpress rest api
  */
