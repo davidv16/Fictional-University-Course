@@ -107,9 +107,9 @@ function university_files() {
     wp_enqueue_script('main-university-js', 'http://localhost:3000/bundled.js', NULL, '1.0', true);
   
   } else {
-    wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.a6d527facd974cdcaf68.js'), NULL, '1.0', true);
-    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.d4280322386d961e3046.js'), NULL, '1.0', true);
-    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.d4280322386d961e3046.css'));
+    wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.d6f859288e95e5ddff6e.js'), NULL, '1.0', true);
+    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.aadad02da8498eeb1359.js'), NULL, '1.0', true);
+    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/style.css'));
   }
   
   /**
@@ -266,48 +266,4 @@ function noSubsAdminBar () {
     show_admin_bar(false);
   }
 }
-
-  // Customize Login Screen
-  /**
-   * @param filter wordpress filter hook, value or object that you want to change or filter
-   * header url is the wordpress logo on the login front page
-   * @param function that you make to change the login
-   */
-  add_filter('login_headerurl', 'ourHeaderUrl');
-
-  // a function to point the header link in the login screen to the main site instead of wordpress.org
-  function ourHeaderUrl() {
-    return esc_url(site_url('/'));
-  }
-
-  // action to load the custom stylesheet for the login screen to overwrite the default one.
-  /**
-   * @param wordpresshook to decide where the scripts are to be loaded
-   * @param function name of the function below where we load the script.
-   */
-  add_action('login_enqueue_scripts', 'ourLoginCSS');
-  
-  //a function to load custom css to the login screen
-  function ourLoginCSS () {
-    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.d4280322386d961e3046.css'));
-     /**
-    * load google fonts
-    * arg1: nickname
-    * arg2: uri
-    */
-    wp_enqueue_style('custom-google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
-  }
-
-  // filter to change the login header title so it doesn't say Powered by Wordpress
-  /**
-   * @param filterhook a wordpress filter hook to target the login header title
-   * @param function the function down below to return the new title
-   */
-  add_filter('login_headertitle', 'ourLoginTitle');
-
-  // a function to return the new title
-  function ourLoginTitle() {
-    //returns the current name of the blog
-    return get_bloginfo('name');
-  }
 ?>
