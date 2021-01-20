@@ -1,3 +1,6 @@
+#wp export
+ai1wm-backups/
+
 # Logs
 logs
 *.log
