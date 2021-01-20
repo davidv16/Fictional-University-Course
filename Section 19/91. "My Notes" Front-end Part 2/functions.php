@@ -16,16 +16,6 @@ function university_custom_rest () {
   register_rest_field('post', 'authorName', array(
     'get_callback' => function() {return get_the_author();}
   ));
-
-  /**
-   * A function to register the new field
-   * @param wptype, type of wordpress archive, posts/pages whatever
-   * @param fieldname, name of the new field
-   * @param data, data to be added to the new field
-   */
-  register_rest_field('note', 'userNoteCount', array(
-    'get_callback' => function() {return count_user_posts(get_current_user_id(), 'note');}
-  ));
 }
 /**
  * Action to run the above function
@@ -117,9 +107,9 @@ function university_files() {
     wp_enqueue_script('main-university-js', 'http://localhost:3000/bundled.js', NULL, '1.0', true);
   
   } else {
-    wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.1b8c15f06e68f6608d0c.js'), NULL, '1.0', true);
-    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.5e822a631e1643e5ac42.js'), NULL, '1.0', true);
-    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.5e822a631e1643e5ac42.css'));
+    wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.a6d527facd974cdcaf68.js'), NULL, '1.0', true);
+    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.d4280322386d961e3046.js'), NULL, '1.0', true);
+    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.d4280322386d961e3046.css'));
   }
   
   /**
@@ -300,7 +290,7 @@ function noSubsAdminBar () {
   
   //a function to load custom css to the login screen
   function ourLoginCSS () {
-    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.5e822a631e1643e5ac42.css'));
+    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.d4280322386d961e3046.css'));
      /**
     * load google fonts
     * arg1: nickname
@@ -320,37 +310,5 @@ function noSubsAdminBar () {
   function ourLoginTitle() {
     //returns the current name of the blog
     return get_bloginfo('name');
-  }
-
-  // Force note posts to be private
-  /**
-   * @param wpHook wordpress hook that inserts the post data
-   * @param function the function we want to run the after the filter
-   * @param prioritynumber a number to set the priority of which filter to be run first. Lower number runs first.
-   * @param howManyArguments how many arguments the function takes
-   */
-  add_filter('wp_insert_post_data', 'makeNotePrivate', 10, 2);
-
-  // a function to enforce the visibility of the note being sent to the database to be private.
-  function makeNotePrivate($data, $postarr) {
-    if($data['post_type'] == 'note') {
-      //if the note posts from the current user are more than 4
-      //and if the post does not contain an id (doesn't exist in the database yet)
-      if(count_user_posts(get_current_user_id(), 'note') > 4 AND !$postarr['ID']) {
-
-        //then die, stop executing at once.
-        die("You have reached your note limit.");
-      }
-      //sanatize text input first
-      $data['post_content'] = sanitize_textarea_field($data['post_content']);
-      $data['post_title'] = sanitize_text_field($data['post_title']);
-    }
-    //if the post type is note and the note is not in the trash
-    if($data['post_type'] == 'note' AND $data['post_status'] != 'trash') {
-      // set the server side status to private
-      $data['post_status'] = "private";
-    }
-
-    return $data;
   }
 ?>

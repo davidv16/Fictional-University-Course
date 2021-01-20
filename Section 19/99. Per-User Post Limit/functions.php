@@ -117,9 +117,9 @@ function university_files() {
     wp_enqueue_script('main-university-js', 'http://localhost:3000/bundled.js', NULL, '1.0', true);
   
   } else {
-    wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.1b8c15f06e68f6608d0c.js'), NULL, '1.0', true);
-    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.5e822a631e1643e5ac42.js'), NULL, '1.0', true);
-    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.5e822a631e1643e5ac42.css'));
+    wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.bc40ae15d79260f963aa.js'), NULL, '1.0', true);
+    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.23e76c81e68f186621b0.js'), NULL, '1.0', true);
+    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.23e76c81e68f186621b0.css'));
   }
   
   /**
@@ -300,7 +300,7 @@ function noSubsAdminBar () {
   
   //a function to load custom css to the login screen
   function ourLoginCSS () {
-    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.5e822a631e1643e5ac42.css'));
+    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.23e76c81e68f186621b0.css'));
      /**
     * load google fonts
     * arg1: nickname
