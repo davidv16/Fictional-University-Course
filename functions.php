@@ -1,5 +1,8 @@
 <?php
 
+// get extra code from this file
+require get_theme_file_path('/inc/like-route.php');
+
 // get extra delegated code from this file 
 require get_theme_file_path('/inc/search-route.php');
 
@@ -117,9 +120,9 @@ function university_files() {
     wp_enqueue_script('main-university-js', 'http://localhost:3000/bundled.js', NULL, '1.0', true);
   
   } else {
-    wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.1b8c15f06e68f6608d0c.js'), NULL, '1.0', true);
-    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.5e822a631e1643e5ac42.js'), NULL, '1.0', true);
-    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.5e822a631e1643e5ac42.css'));
+    wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.aeac6d5597dbc5c84b5d.js'), NULL, '1.0', true);
+    wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.3403b6fc5a5025e60467.js'), NULL, '1.0', true);
+    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.3403b6fc5a5025e60467.css'));
   }
   
   /**
@@ -300,7 +303,7 @@ function noSubsAdminBar () {
   
   //a function to load custom css to the login screen
   function ourLoginCSS () {
-    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.5e822a631e1643e5ac42.css'));
+    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.3403b6fc5a5025e60467.css'));
      /**
     * load google fonts
     * arg1: nickname
