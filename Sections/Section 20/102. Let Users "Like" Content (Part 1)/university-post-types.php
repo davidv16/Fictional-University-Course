@@ -102,10 +102,6 @@ function university_post_types() {
 
   // Like Post Type
   register_post_type('like', array(
-    //make a unique name so this has custom permissions and doesn't inheret from blog post
-    'capability_type' => 'note',
-    //enforce and require the permissions at the right time and place
-    'map_meta_cap' => true,
     'supports' => array('title'),
     // should be privat and specific to each user.
     'public' => false,
@@ -119,23 +115,6 @@ function university_post_types() {
       'singular_name' => 'Like'
     ),
     'menu_icon' => 'dashicons-heart'
-  ));
-
-  // Slideshow Post Type
-  register_post_type('slideshow', array(
-    'supports' => array('title'),
-    // should be privat and specific to each user.
-    'public' => false,
-    // to make it appear in the admin dashboard
-    'show_ui' => true,
-    'labels' => array(
-      'name' => 'Slideshows',
-      'add_new_item' => 'Add New Slideshow',
-      'edit_item' => 'Edit Slideshow',
-      'all_items' => 'All Slideshows',
-      'singular_name' => 'Slideshow'
-    ),
-    'menu_icon' => 'dashicons-format-gallery'
   ));
 }
 /**
