@@ -46,7 +46,7 @@
     define( 'DB_USER', 'ueje2psekq3b3' );
     
     /** MySQL database password */
-    define( 'DB_PASSWORD', 'Morgunstund gefur wordpress i mund #1' );
+    define( 'DB_PASSWORD', 'E_@k15#bfb21' );
     
     /** MySQL hostname */
     define( 'DB_HOST', '127.0.0.1' );

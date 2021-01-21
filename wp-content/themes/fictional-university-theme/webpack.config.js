@@ -74,7 +74,7 @@ if (currentTask == "devFast") {
   cssConfig.use.unshift("style-loader")
   config.output = {
     filename: "bundled.js",
-    publicPath: "http://dava.sgedu.site/"
+    publicPath: "http://localhost:3000"
   }
   config.devServer = {
     before: function (app, server) {
@@ -95,11 +95,11 @@ if (currentTask == "devFast") {
       // server._watch(["./**/*.php", "./**/*.js"])
       server._watch(["./**/*.php", "!./functions.php"])
     },
-    public: "http://dava.sgedu.site/",
-    publicPath: "http://dava.sgedu.site/",
+    public: "http://localhost:3000",
+    publicPath: "http://localhost:3000",
     disableHostCheck: true,
     contentBase: path.join(__dirname),
-    contentBasePublicPath: "http://dava.sgedu.site/",
+    contentBasePublicPath: "http://localhost:3000",
     hot: true,
     port: 3000,
     headers: {
