@@ -1,7 +1,9 @@
 # Become a WordPress Developer: Unlocking Power With Code
 All coursework for the Become a WordPress Developer: Unlocking Power With Code by Brad Schiff.
 
-[The Course at Udemy](https://www.udemy.com/course/become-a-wordpress-developer-php-javascript/)  
+[The Course at Udemy](https://www.udemy.com/course/become-a-wordpress-developer-php-javascript/)
+
+[The code files for the project are under] (wp-content/themes/fictional-university-theme)
 
 ![Certificate]
 
