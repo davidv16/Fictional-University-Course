@@ -121,6 +121,7 @@ function university_post_types() {
     'menu_icon' => 'dashicons-heart'
   ));
 
+  // TODO
   // Slideshow Post Type
   register_post_type('slideshow', array(
     'supports' => array('title'),

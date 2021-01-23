@@ -1,0 +1,13 @@
+1. Búa til plugin eða post type fyrir slideshow á front síðunni.
+
+2. Láta about us page returna short code sem skrifar út hversu mörg progröm eru í boði.
+
+3. Láta title boxið "your cool border box" í custom blokkinni segja "Preview: (það sem þú skrifaðir í lita boxið)" og updeita í real time.
+í jsx þarf maður bara að breyta header 3 í edit method, semsagt setur þetta inn í babel editorinn og breytir h3 innihaldinu og style í h3
+
+<div>
+  <h3>Your Cool Border Box</h3>
+  <input type="text" value={props.attributes.content} onChange={updateContent} />
+
+  <wp.components.ColorPicker color={props.attributes.color} onChangeComplete={updateColor} />
+</div>
