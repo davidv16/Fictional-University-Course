@@ -3,7 +3,7 @@ All coursework for the Become a WordPress Developer: Unlocking Power With Code b
 
 [The Course at Udemy](https://www.udemy.com/course/become-a-wordpress-developer-php-javascript/)  
 
-![Certificate]
+![Certificate](Certificate.jpg)
 
 ## Curriculum
 
