@@ -5,6 +5,8 @@ All coursework for the Become a WordPress Developer: Unlocking Power With Code b
 
 The code files for the project are under: wp-content/themes/fictional-university-theme
 
+[The Website Live](http://standardlausnir.webdev.is/)
+
 ![Certificate](Certificate.jpg)
 
 ## Curriculum
